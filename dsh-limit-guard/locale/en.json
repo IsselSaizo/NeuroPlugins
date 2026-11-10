@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Limit Guard",
+    "description": "Watches the context window and subscription limits (Wiolett, ChatGPT/Codex). Near the limit it has the agent write .agent/handoff/STATUS.md, then refuses automatic steps and blocks an active goal so work does not loop into an exhausted quota. Settings → Limit Guard shows what is left, pace, and how many % each task spent. Adds the limit_status tool and a handoff-summary button."
+  }
+}

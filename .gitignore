@@ -1,0 +1,42 @@
+# Сборка и скачиваемые бинарники (ставятся setup-скриптом)
+src-tauri/target/
+src-tauri/gen/
+ffmpeg/
+dist/
+node_modules/
+vendor/
+/FF Montage.exe
+/FF Montage.old.exe
+/ff-montage
+/ff-montage.old.exe
+/ff-montage.exe
+# Установленные плагины пользователя (примеры — в examples/plugins)
+/plugins/
+
+# Личные настройки и данные — у каждого свои
+config.json
+# portable-режим: настройки окна (M0.6), аудиоплагины пользователя и кэш их сканирования
+/settings.json
+/audio-plugins/
+/audio-plugins.json
+/user-fonts/
+.firstrun/
+.test-cache/
+Cache/
+Output/
+Projects/
+
+# Служебные файлы ИИ-агента (карта проекта, заметки, хэндофф)
+.agent/
+
+# Промежуточная сборка .NET (содержит локальные пути и бэкапы реестра);
+# готовый exe лежит в DiskDoctor/publish/
+bin/
+obj/
+
+# Мусор
+*.log
+*.part
+.DS_Store
+Thumbs.db
+desktop.ini

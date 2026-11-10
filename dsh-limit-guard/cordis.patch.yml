@@ -1,0 +1,30 @@
+# dsh-limit-guard bundle patch. Override any field from your profile patch
+# by restating the whole `config` of the `limit-guard` row.
+# Switches and thresholds can also be changed at runtime in
+# Settings → Limit Guard; those overrides live in ~/.dsh/limit-guard/state.json.
+- insert:
+    - id: limit-guard
+      name: dsh-limit-guard
+      config:
+        enabled: true            # master switch (task accounting keeps running when off)
+        warnPercent: 90          # account window used % -> wrap up + handoff
+        contextWarnPercent: 85   # context window fill % -> handoff + new session
+        hardStopPercent: 98      # a user-continued session wraps up again here (101 = never)
+        graceSteps: 8            # max steps for the handoff before automatic steps are refused
+        handoffSteps: 2          # steps allowed after the handoff file is written
+        blockGoals: true         # move an active goal to `blocked` (usage-limit) at the limit
+        stopRetryOnQuota: true   # do not retry requests that failed on an exhausted quota
+        historySize: 60          # finished tasks kept for the dashboard
+        cacheMs: 60000
+        requestTimeoutMs: 6000
+        handoffPath: .agent/handoff/STATUS.md
+        wiolett:
+          enabled: true
+          url: https://ops.wiolett.net/api/inference/v1/usage
+          credential: OPFIELD_API_KEY
+          providers: [opfield]
+        codex:
+          enabled: true
+          url: https://chatgpt.com/backend-api/wham/usage
+          credential: PI_OAUTH_OPENAI_CODEX
+          providers: [openai-codex]

@@ -1,0 +1,36 @@
+{
+  "name": "dsh-limit-guard",
+  "version": "0.3.0",
+  "description": "Stops the agent before usage limits run out and makes it write a handoff file (context window, Wiolett, ChatGPT/Codex subscription), then holds automatic work (goal rounds, retries) until the window resets. Settings page with remaining limits, pace and per-task spend; one-click handoff-summary button.",
+  "license": "GPL-3.0-only",
+  "repository": { "type": "git", "url": "git+https://github.com/IsselSaizo/NeuroPlugins.git", "directory": "dsh-limit-guard" },
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": ["index.js", "client.js", "cordis.patch.yml", "locale/*.json", "icon.svg", "README.md"],
+  "keywords": ["deepseek-harness", "dsh", "dsh-plugin", "dsh-bundle", "limits", "handoff"],
+  "engines": { "node": ">=20" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation", "@deepseek-ai/dsh-client-locale"]
+    },
+    "plugin": {
+      "schemaVersion": 1,
+      "category": "productivity",
+      "displayName": { "en": "Limit Guard", "ru": "Сторож лимитов" },
+      "summary": {
+        "en": "Stops work before limits run out, writes a handoff file and holds goal rounds until the reset. Settings page with limits left and per-task spend.",
+        "ru": "Останавливает работу до исчерпания лимитов, пишет файл передачи дел и держит goal до сброса. Страница в настройках: остаток лимитов и расход по задачам."
+      }
+    }
+  }
+}
